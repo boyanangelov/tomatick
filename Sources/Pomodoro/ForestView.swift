@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// Small deterministic RNG so layout and tree looks are stable across redraws.
-struct SplitMix {
+private struct SplitMix {
     var state: UInt64
     init(_ seed: Int) { state = UInt64(truncatingIfNeeded: seed) &+ 0x9E37_79B9_7F4A_7C15 }
     mutating func next() -> Double {
@@ -150,10 +150,4 @@ struct ForestView: View {
                      with: .color(.yellow))
         }
     }
-}
-
-/// Plant kind for a seed: 0 pine, 1 round tree, 2 bush, 3 flower (matches ForestView.drawPlant).
-func plantKind(seed: Int) -> Int {
-    var rng = SplitMix(seed)
-    return Int(rng.next() * 4)
 }

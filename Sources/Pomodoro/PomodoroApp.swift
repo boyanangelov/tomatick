@@ -8,7 +8,8 @@ struct PomodoroApp: App {
         MenuBarExtra {
             MenuView(model: model)
         } label: {
-            Image(nsImage: model.menuBarImage)
+            Text(model.menuBarTitle)
+                .monospacedDigit()
         }
         .menuBarExtraStyle(.window)
     }
