@@ -30,8 +30,6 @@ final class TimerModel: ObservableObject {
     @Published private(set) var state: RunState = .idle
     @Published private(set) var remaining: TimeInterval = 0
     @Published private(set) var completedSessions = 0
-    /// One random seed per completed focus session, persisted across launches.
-    @Published private(set) var forest: [Int] = UserDefaults.standard.array(forKey: "forest") as? [Int] ?? []
 
     private var endDate: Date?
     private var timer: Timer?
@@ -59,18 +57,6 @@ final class TimerModel: ObservableObject {
     var timeString: String {
         let total = Int(remaining.rounded(.up))
         return String(format: "%02d:%02d", total / 60, total % 60)
-    }
-
-    /// Progress (0...1) of the current focus session, or nil during breaks.
-    var growth: Double? {
-        guard phase == .work else { return nil }
-        let d = duration(for: .work)
-        return d > 0 ? min(1, max(0, 1 - remaining / d)) : 0
-    }
-
-    func clearForest() {
-        forest = []
-        defaults.set(forest, forKey: "forest")
     }
 
     var menuBarTitle: String {
@@ -133,11 +119,7 @@ final class TimerModel: ObservableObject {
     private func advance(countSession: Bool) {
         stopTimer()
         if phase == .work {
-            if countSession {
-                completedSessions += 1
-                forest.append(Int.random(in: 0..<1_000_000))
-                defaults.set(forest, forKey: "forest")
-            }
+            if countSession { completedSessions += 1 }
             let n = max(1, sessionsBeforeLongBreak)
             phase = (countSession && completedSessions % n == 0) ? .longBreak : .shortBreak
         } else {
