@@ -73,8 +73,8 @@ final class TimerModel: ObservableObject {
         defaults.set(forest, forKey: "forest")
     }
 
-    var menuBarTitle: String {
-        state == .idle ? phase.icon : "\(phase.icon) \(timeString)"
+    var menuBarImage: NSImage {
+        MenuBarIcon.image(forest: forest, phase: phase, state: state, growth: growth, time: timeString)
     }
 
     // MARK: Controls
