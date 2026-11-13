@@ -10,7 +10,11 @@ struct MenuView: View {
             Text(model.timeString)
                 .font(.system(size: 44, weight: .medium, design: .rounded))
                 .monospacedDigit()
-            Text("Sessions completed: \(model.completedSessions)")
+            ForestView(trees: model.forest, growth: model.growth)
+                .frame(height: 110)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .contextMenu { Button("Clear Forest") { model.clearForest() } }
+            Text("Sessions: \(model.completedSessions) · Forest: \(model.forest.count) 🌳")
                 .font(.caption)
                 .foregroundStyle(.secondary)
 
