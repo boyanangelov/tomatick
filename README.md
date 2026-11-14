@@ -2,6 +2,10 @@
 
 A tiny macOS menu-bar Pomodoro timer. It counts down in the menu bar and plays a sound when a session ends.
 
+![Setting a focus session and starting the timer from the menu bar](docs/menu-demo.gif)
+
+([MP4 version](docs/menu-demo.mp4))
+
 ## Why
 
 Most Pomodoro apps want an account, a window, or a subscription. This one is a single small app that lives in the menu bar:
