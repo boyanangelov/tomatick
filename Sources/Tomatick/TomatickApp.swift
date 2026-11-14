@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct PomodoroApp: App {
+struct TomatickApp: App {
     @StateObject private var model = TimerModel()
 
     var body: some Scene {

@@ -2,7 +2,7 @@ import Foundation
 
 /// Start at login via a LaunchAgent (same plist as install.sh).
 enum LoginItem {
-    static let label = "io.github.boyanangelov.pomodoro"
+    static let label = "io.github.boyanangelov.tomatick"
     static var plistURL: URL {
         FileManager.default.homeDirectoryForCurrentUser
             .appendingPathComponent("Library/LaunchAgents/\(label).plist")
