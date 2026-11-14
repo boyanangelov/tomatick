@@ -26,6 +26,14 @@ final class TimerModel: ObservableObject {
     @Published var longBreakMinutes: Int { didSet { defaults.set(longBreakMinutes, forKey: "longBreakMinutes"); durationChanged(.longBreak) } }
     @Published var sessionsBeforeLongBreak: Int { didSet { defaults.set(sessionsBeforeLongBreak, forKey: "sessionsBeforeLongBreak") } }
 
+    @Published var startAtLogin = LoginItem.isEnabled {
+        didSet {
+            guard startAtLogin != oldValue else { return }
+            try? LoginItem.set(startAtLogin)
+            if startAtLogin != LoginItem.isEnabled { startAtLogin = LoginItem.isEnabled }
+        }
+    }
+
     @Published private(set) var phase: Phase = .work
     @Published private(set) var state: RunState = .idle
     @Published private(set) var remaining: TimeInterval = 0

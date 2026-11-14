@@ -4,7 +4,7 @@
 <dict>
     <key>CFBundleName</key><string>Pomodoro</string>
     <key>CFBundleDisplayName</key><string>Pomodoro</string>
-    <key>CFBundleIdentifier</key><string>com.local.pomodoro</string>
+    <key>CFBundleIdentifier</key><string>io.github.boyanangelov.pomodoro</string>
     <key>CFBundleExecutable</key><string>Pomodoro</string>
     <key>CFBundlePackageType</key><string>APPL</string>
     <key>CFBundleVersion</key><string>1</string>

@@ -32,6 +32,9 @@ struct MenuView: View {
 
             Divider()
 
+            Toggle("Start at Login", isOn: $model.startAtLogin)
+                .frame(maxWidth: .infinity, alignment: .leading)
+
             HStack {
                 Button("Reset All") { model.resetAll() }
                 Spacer()
